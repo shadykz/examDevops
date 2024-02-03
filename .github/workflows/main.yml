@@ -13,6 +13,18 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Build and publish with Docker Compose
+    - name: Build and publish Frontend
+      working-directory: client
+      run: |
+        npm install
+        npm run build
+
+    - name: Build and publish Backend
+      working-directory: server
+      run: |
+        mvn clean install -Dmaven.compiler.source=11 -Dmaven.compiler.target=11
+
+    - name: Publish to localhost
+      working-directory: server
       run: |
         docker-compose up --build -d
