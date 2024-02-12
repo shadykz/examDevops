@@ -1,4 +1,3 @@
-# Этап сборки
 FROM maven:3.8-openjdk-11 AS build
 
 WORKDIR /app
@@ -7,10 +6,8 @@ COPY pom.xml .
 
 COPY src ./src
 
-# Запускаем сборку с указанием версии Java
 RUN mvn clean install -Dmaven.compiler.source=11 -Dmaven.compiler.target=11
 
-# Этап выполнения
 FROM adoptopenjdk:11-jre-hotspot
 
 WORKDIR /app
