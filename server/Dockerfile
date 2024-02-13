@@ -21,4 +21,4 @@ ENV SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
 EXPOSE 8080
 
-CMD ["mvn", "spring-boot:run"]
+CMD ["java", "-jar", "back-end-0.0.1-SNAPSHOT.jar"]
